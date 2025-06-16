@@ -27,7 +27,7 @@ function App() {
     reduceTodo.splice(index);
     localStorage.setItem('todolist',JSON.stringify(reduceTodo));
     setTodos(reduceTodo);
-  }
+  };
 
   useEffect(()=>{
     let savedTodo =JSON.parse(localStorage.getItem('todolist'));
@@ -53,8 +53,8 @@ function App() {
           </div>
               </div>
               <div className='btn-area'>
-            <button className = {`secondaryBtn ${isCompleteScreen ===false && 'active'}`} onClick={()=>setIsCompletedScreen(false)}>Todo</button>
-            <button className={`secondaryBtn ${isCompleteScreen ===true && 'active'}`}onClick={()=>setIsCompletedScreen(true)}>Completed</button>
+            <button className = {`secondaryBtn ${isCompleteScreen ===false && 'active'}`} onClick={()=>setIsCompletedScreen(false)}>TASK</button>
+            <button className={`secondaryBtn ${isCompleteScreen ===true && 'active'}`}onClick={()=>setIsCompletedScreen(true)}>COMPLETED</button>
             
           </div>
            <div className='todo-list'>
