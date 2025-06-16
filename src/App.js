@@ -2,11 +2,8 @@
 import { useEffect, useState } from 'react';
 import './App.css';
 import { MdDelete } from "react-icons/md";
-import { FaCheck } from "react-icons/fa";
-
 
 function App() {
-  const [isCompleteScreen,setIsCompletedScreen]=useState(false);
   const[allTodos,setTodos]=useState([]);
   const [newTitle,setNewTitle]=useState("");
   const [newDescription, setNewDescription] = useState('');
@@ -53,22 +50,23 @@ function App() {
           </div>
               </div>
               <div className='btn-area'>
-            <button className = {`secondaryBtn ${isCompleteScreen ===false && 'active'}`} onClick={()=>setIsCompletedScreen(false)}>TASK</button>
-            <button className={`secondaryBtn ${isCompleteScreen ===true && 'active'}`}onClick={()=>setIsCompletedScreen(true)}>COMPLETED</button>
+            <button className = 'secondaryBtn'>TODOS</button>
+
             
           </div>
            <div className='todo-list'>
               {allTodos.map((item,index)=>{
+                // {console.log(item)}
                 return(
                   <div className='todo-list-item' key={index}>
               <div>
                 <h3>{item.title}</h3>
-                <p className='para'>{item.Description} </p> 
+                <p className='para'>{item.description} </p> 
                  </div>
           
                 <div>
                    <div className='deleteBtn' onClick={()=>handleDeleteTodo(index)}><MdDelete/></div> 
-                  <div className='checkBtn'> <FaCheck/></div>
+                
                 </div>
            </div>
                 )
