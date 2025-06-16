@@ -1,5 +1,5 @@
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './App.css';
 import { MdDelete } from "react-icons/md";
 import { FaCheck } from "react-icons/fa";
@@ -19,8 +19,16 @@ function App() {
     let updatedTodoArr=[...allTodos];
     updatedTodoArr.push(newTOdoItem);
     setTodos(updatedTodoArr);
+    localStorage.setItem('todolist',JSON.stringify(updatedTodoArr))
 
-  }
+  };
+
+  useEffect(()=>{
+    let savedTodo =JSON.parse(localStorage.getItem('todolist'));
+    if(savedTodo){
+      setTodos(savedTodo);
+    }
+  },[])
   return (
     <div className='App'>
       <h1>My Todo</h1> 
@@ -48,8 +56,8 @@ function App() {
                 return(
                   <div className='todo-list-item' key={index}>
               <div>
-                <h3>item.title</h3>
-                <p className='para'>Description </p> 
+                <h3>{item.title}</h3>
+                <p className='para'>{item.Description} </p> 
                  </div>
           
                 <div>
